@@ -25,8 +25,10 @@
         group: stack
         mode: 0644
       with_items:
-        - controller
         - compute
+        # ansible-networking has its own controller nic that's already in
+        # the image
+        #- controller
     - lineinfile:
         path: /etc/sudoers
         regexp: 'Defaults\s*requiretty'
