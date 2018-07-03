@@ -27,6 +27,8 @@ Vagrant.configure(2) do |config|
       domain.disk_bus = 'ide'
       domain.cpus = 2
       domain.memory = 2048
+      domain.management_network_name = 'junipernet'
+      domain.management_network_address = '192.168.142.0/24'
     end
 
     # DO NOT REMOVE / NO VMtools installed
@@ -55,16 +57,17 @@ Vagrant.configure(2) do |config|
       domain.disk_bus = 'ide'
       domain.cpus = 2
       domain.memory = 2048
+      domain.management_network_name = 'junipernet'
+      domain.management_network_address = '192.168.142.0/24'
+      domain.nic_model_type = "e1000"
     end
 
     # Management ports
     vqfx.vm.network "private_network", auto_config: false,
-      auto_config: false,
       :libvirt__tunnel_type => "udp",
       :libvirt__tunnel_port => '9501',
       :libvirt__tunnel_local_port => '8501'
     vqfx.vm.network "private_network", auto_config: false,
-      auto_config: false,
       :libvirt__tunnel_type => "udp",
       :libvirt__tunnel_port => '9502',
       :libvirt__tunnel_local_port => '8502'
